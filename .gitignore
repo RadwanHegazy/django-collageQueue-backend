@@ -1,3 +1,3 @@
 migrations
 __pycache__
-*.sqlit3
+*.sqlite3
