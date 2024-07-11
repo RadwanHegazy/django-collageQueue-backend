@@ -2,7 +2,7 @@ from ..serializers import Exam, ExamSerializer, Section, SectionSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from ...models import Level
 
 class home_view (APIView) : 
     serializer_class = ExamSerializer
@@ -41,4 +41,10 @@ class exam_view (APIView) :
             'pending' : query.exclude(state=Section.SectionState.done).count(),
             'sections' : serializer.data
         }
+        return Response(data, status=status.HTTP_200_OK)
+
+
+class level_view (APIView) :
+    def get(self, request):
+        data = Level.objects.values('id','name')
         return Response(data, status=status.HTTP_200_OK)

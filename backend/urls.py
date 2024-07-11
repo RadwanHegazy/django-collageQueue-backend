@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from exam.apis.views import get
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('users.apis.urls')),
     path('exam/', include('exam.apis.urls')),
+    path('levels/', get.level_view.as_view(),name='levels'),
 ]
